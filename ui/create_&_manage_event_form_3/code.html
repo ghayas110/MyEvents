@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyEvents | Step 2: Logistics &amp; Location</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2233",
+                        "border-dark": "#2d3748"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 10px; }
+        .completeness-fill { transition: width 0.5s ease-in-out; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<nav class="border-b border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-icons-outlined text-white">event</span>
+</div>
+<span class="text-xl font-bold tracking-tight">MyEvents<span class="text-primary">.</span></span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-medium text-slate-500 uppercase tracking-widest">Draft Saved 12:45 PM</span>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-icons-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+<span class="text-xs font-bold text-primary">JD</span>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
+<div class="mb-10">
+<div class="flex items-center justify-between max-w-4xl mx-auto">
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center ring-4 ring-emerald-500/10">
+<span class="material-icons-outlined text-sm">check</span>
+</div>
+<span class="text-xs font-semibold text-emerald-500 uppercase">Core Details</span>
+</div>
+<div class="flex-1 h-px bg-emerald-500 mx-4"></div>
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
+<span class="text-sm font-bold">2</span>
+</div>
+<span class="text-xs font-semibold text-primary uppercase">Logistics</span>
+</div>
+<div class="flex-1 h-px bg-slate-200 dark:bg-border-dark mx-4"></div>
+<div class="flex flex-col items-center gap-2 group opacity-50">
+<div class="w-10 h-10 rounded-full border-2 border-slate-300 dark:border-border-dark text-slate-400 flex items-center justify-center">
+<span class="text-sm font-bold">3</span>
+</div>
+<span class="text-xs font-semibold text-slate-400 uppercase">Management</span>
+</div>
+<div class="flex-1 h-px bg-slate-200 dark:bg-border-dark mx-4"></div>
+<div class="flex flex-col items-center gap-2 group opacity-50">
+<div class="w-10 h-10 rounded-full border-2 border-slate-300 dark:border-border-dark text-slate-400 flex items-center justify-center">
+<span class="text-sm font-bold">4</span>
+</div>
+<span class="text-xs font-semibold text-slate-400 uppercase">Gallery</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<section class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-border-dark">
+<h2 class="text-lg font-bold">Logistics &amp; Location</h2>
+<p class="text-sm text-slate-500">Define where and when your event takes place.</p>
+</div>
+<div class="p-6 space-y-8">
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                                    City Name
+                                    <span class="text-red-500">*</span>
+</label>
+<div class="relative group">
+<span class="material-icons-outlined absolute left-3 top-2.5 text-slate-400 text-sm">location_on</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" placeholder="Start typing city name..." type="text" value="San Francisco, CA"/>
+<div class="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-lg shadow-xl z-10 overflow-hidden">
+<div class="p-2 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 text-sm">history</span>
+<span class="text-sm">San Francisco, CA, USA</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Latitude</label>
+<input class="w-full px-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="37.7749" type="text" value="37.7749"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Longitude</label>
+<input class="w-full px-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="-122.4194" type="text" value="-122.4194"/>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Map Picker</label>
+<div class="relative h-64 w-full rounded-xl overflow-hidden border border-slate-200 dark:border-border-dark group cursor-crosshair">
+<div class="absolute inset-0 bg-slate-200">
+<img class="w-full h-full object-cover grayscale brightness-50 contrast-125" data-alt="Stylized dark map of San Francisco area" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiQFDGzPZpdMqMfRD3KUBZqVsU2lKBIwYdM5U9KEauCkrPYO9GM9mtK5JTVCKJjPLzTjuo5OOxVdY7TuNwOuNydnqB_NHWL5zS_xOn8NrXpihdw2S3j33fbrJohH9xWulT0eD2RiCRBLDgDDXLnIahpERLMtfxasTsBfZArT0Nacsf5UxIofOxNLUCJMacBCD48L5fqQZeLAP8WHGRzcdTmoanu7npO9o59cxLvVyi5v5b7oxj4u2Qhfj03cgt7HiRjiPCh6jZ3w"/>
+</div>
+<div class="absolute top-4 right-4 flex flex-col gap-2">
+<button class="bg-white dark:bg-surface-dark p-2 rounded-lg shadow-lg hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="bg-white dark:bg-surface-dark p-2 rounded-lg shadow-lg hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+</div>
+<div class="absolute bottom-4 left-4">
+<div class="bg-white/90 dark:bg-surface-dark/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[10px] font-mono border border-slate-200 dark:border-border-dark">
+                                        37.7749° N, 122.4194° W
+                                    </div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative flex flex-col items-center">
+<div class="mb-[-4px] bg-primary text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap">
+                                            DRAG TO POSITION
+                                        </div>
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center ring-4 ring-primary/40 animate-pulse">
+<span class="material-icons-outlined text-primary text-3xl">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100 dark:border-border-dark">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                                    Start Date &amp; Time
+                                    <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-2.5 text-slate-400 text-sm">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-background-dark border border-red-500/50 dark:border-red-500/50 rounded-lg focus:ring-2 focus:ring-red-500 transition-all text-slate-400" type="datetime-local" value="2023-12-01T12:00"/>
+</div>
+<div class="flex items-center gap-1 text-red-500">
+<span class="material-symbols-outlined text-[16px]">error</span>
+<span class="text-xs font-medium">Date must be in the future</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                                    Attendee Limit
+                                    <span class="material-symbols-outlined text-[14px] text-slate-400" title="Maximum capacity for this venue">help</span>
+</label>
+<div class="flex items-center">
+<button class="w-12 h-10 flex items-center justify-center border border-slate-200 dark:border-border-dark rounded-l-lg hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-icons-outlined text-sm">remove</span>
+</button>
+<input class="w-full h-10 text-center bg-slate-50 dark:bg-background-dark border-y border-slate-200 dark:border-border-dark focus:ring-0 font-bold" type="number" value="500"/>
+<button class="w-12 h-10 flex items-center justify-center border border-slate-200 dark:border-border-dark rounded-r-lg hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-icons-outlined text-sm">add</span>
+</button>
+</div>
+<p class="text-[10px] text-slate-500 text-right">Recommended: 100-1000</p>
+</div>
+</div>
+</div>
+</section>
+<div class="bg-blue-50/50 dark:bg-primary/5 border border-blue-100 dark:border-primary/20 rounded-xl p-6 flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">info</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Setting the Stage</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Make sure your location is accurate. We use these coordinates to show your event on the global discovery map and calculate distances for local attendees.</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="sticky top-24 space-y-6">
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm p-6">
+<h3 class="font-bold mb-4">Form Completeness</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-slate-500">Overall Progress</span>
+<span class="text-2xl font-bold text-primary">50%</span>
+</div>
+<div class="flex gap-1 h-2 w-full">
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-slate-100 dark:bg-border-dark rounded-full"></div>
+<div class="flex-1 bg-slate-100 dark:bg-border-dark rounded-full"></div>
+</div>
+<ul class="space-y-3 pt-4 border-t border-slate-100 dark:border-border-dark">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-icons-outlined text-emerald-500 text-sm mt-0.5">check_circle</span>
+<span class="text-slate-600 dark:text-slate-400 line-through">Core event details</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-icons-outlined text-primary text-sm mt-0.5 animate-pulse">radio_button_checked</span>
+<span class="font-medium text-slate-900 dark:text-white">Logistics &amp; Location</span>
+</li>
+<li class="flex items-start gap-3 text-sm opacity-50">
+<span class="material-icons-outlined text-slate-400 text-sm mt-0.5">radio_button_unchecked</span>
+<span>Management settings</span>
+</li>
+<li class="flex items-start gap-3 text-sm opacity-50">
+<span class="material-icons-outlined text-slate-400 text-sm mt-0.5">radio_button_unchecked</span>
+<span>Gallery &amp; Media</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl text-primary">lightbulb</span>
+</div>
+<h3 class="font-bold text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                            Production Tip
+                        </h3>
+<p class="text-xs text-primary/80 leading-relaxed">
+                            Events with clear location pinning and precise start times see 35% higher check-in rates. Ensure your coordinates match the main entrance.
+                        </p>
+</div>
+<button class="w-full py-4 px-6 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2 border border-transparent hover:border-slate-300 dark:hover:border-slate-600">
+<span class="material-icons-outlined">visibility</span>
+                        Preview Step 1 &amp; 2
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md border-t border-slate-200 dark:border-border-dark py-4 z-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-4 order-2 md:order-1">
+<button class="px-6 py-2.5 rounded-lg border border-slate-200 dark:border-border-dark font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+<span class="material-icons-outlined text-sm">arrow_back</span>
+                    Previous
+                </button>
+<button class="px-6 py-2.5 rounded-lg text-slate-500 font-semibold hover:text-slate-800 dark:hover:text-slate-200">
+                    Save as Draft
+                </button>
+</div>
+<div class="flex items-center gap-6 w-full md:w-auto order-1 md:order-2">
+<div class="hidden md:block text-right">
+<p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Time to Complete</p>
+<p class="text-xs font-bold">~ 4 Minutes</p>
+</div>
+<button class="w-full md:w-auto px-10 py-3 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    Next: Management
+                    <span class="material-icons-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-24 right-8 z-50">
+<div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 border border-slate-800 dark:border-slate-100">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-sm font-medium">Auto-save: Logistics updated</span>
+</div>
+</div>
+
+</body></html>

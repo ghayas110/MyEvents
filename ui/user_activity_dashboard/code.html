@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Activity Dashboard | MyEvents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#135bec",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-primary/10 bg-white dark:bg-background-dark/50 hidden lg:flex flex-col sticky top-0 h-screen">
+<div class="p-6 border-b border-primary/10 flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white text-sm">event</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary">MyEvents</span>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<p class="px-4 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">Dashboard</p>
+<a class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/10 rounded-lg font-medium transition-colors" href="#">
+<span class="material-icons text-[20px]">dashboard</span>
+                    Activity Overview
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary rounded-lg font-medium transition-all group" href="#">
+<span class="material-icons text-[20px] group-hover:text-primary">confirmation_number</span>
+                    My Tickets
+                </a>
+<p class="px-4 py-2 mt-6 text-xs font-semibold text-slate-400 uppercase tracking-wider">Account Management</p>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary rounded-lg font-medium transition-all group" href="#">
+<span class="material-icons text-[20px] group-hover:text-primary">settings</span>
+                    Account Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary rounded-lg font-medium transition-all group" href="#">
+<span class="material-icons text-[20px] group-hover:text-primary">notifications</span>
+                    Notifications
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary rounded-lg font-medium transition-all group" href="#">
+<span class="material-icons text-[20px] group-hover:text-primary">security</span>
+                    Security
+                </a>
+</nav>
+<div class="p-4 border-t border-primary/10">
+<button class="flex items-center gap-3 w-full px-4 py-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg font-medium transition-colors">
+<span class="material-icons text-[20px]">logout</span>
+                    Sign Out
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<!-- Top Navbar (Mobile/Tablet and Profile Quick Access) -->
+<header class="h-16 bg-white dark:bg-background-dark border-b border-primary/10 flex items-center justify-between px-8 sticky top-0 z-30">
+<div class="flex items-center lg:hidden gap-2">
+<span class="material-icons text-primary">menu</span>
+<span class="font-bold text-primary">MyEvents</span>
+</div>
+<div class="hidden lg:block">
+<h2 class="text-sm font-medium text-slate-500">Welcome back, Alex!</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors relative">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="User profile avatar smiling headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByniZCdK-4g0TsPPXPJDR-FAFj_IGYxmqZEVXXuxx6iirNJB5B7vv_62AD6NPFcyaBePYF8d1UEZH6nrIjOXfh9o-mIHWF2mDB_ulQ0fIl1Li8e7gZdWYTlm3p85kOp4uS23L9BuPEMxFRHZT1OfYwMrlUpH7U6yVXrjfTtqFzgH1HeTG7nPxnHoPA2BuflAMMbH30T4TTOI5HWg_zo67VU4AeKBI_IvscJROW2ofvQk0NhYsvBPjXIpMX-WqdLtJsKTYIqWIobg"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-6xl mx-auto">
+<!-- Profile Header Card -->
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/5 p-6 mb-8 flex flex-col md:flex-row items-center md:items-end justify-between gap-6">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="relative">
+<img class="w-24 h-24 rounded-2xl object-cover border-4 border-white dark:border-slate-800 shadow-lg" data-alt="Large user profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDksSsAQg4yh6fcGayaZBcLLvKjnPkntEG9U7t-T6Gz0OFveccIGxGV5xqkW1SdHPzCCkzf4PyGPYWYhAkHHKyFYosS3UsIND_MfBZ9yDzfdQJHZTfVO9zXcHKOXKvTPiJgiShwFSovXrdajoYWg7JvvOORVwY93WDBr9iulNhUJt4IaX4-8zWTLnCSCgLRLXeVDjNTEkv71Uy1RayY-g9D1EbCJbzBXOhxoEscZVJk8JXs2m2IfXCXsYWeogxShRNgHHQhPfxccg"/>
+<span class="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white dark:border-slate-800"></span>
+</div>
+<div class="text-center md:text-left">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Alex Johnson</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">alex.johnson@example.com</p>
+<div class="mt-2 flex flex-wrap justify-center md:justify-start gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20 uppercase tracking-tight">Pro Member</span>
+<span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs font-medium rounded-full border border-slate-200 dark:border-slate-700">Member since May 2022</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                            Edit Profile
+                        </button>
+<button class="flex-1 md:flex-none px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-icons align-middle text-lg">share</span>
+</button>
+</div>
+</section>
+<!-- Dashboard Tabs Section -->
+<section>
+<div class="flex border-b border-primary/10 mb-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<button class="px-6 py-4 border-b-2 border-primary text-primary font-bold text-sm">
+                            My Registered Events
+                        </button>
+<button class="px-6 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 font-medium text-sm transition-colors">
+                            Events I'm Organizing
+                        </button>
+<button class="px-6 py-4 border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 font-medium text-sm transition-colors">
+                            Favorites
+                        </button>
+</div>
+<!-- Registered Events Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Event Card 1 -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-primary/5 overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="relative h-40">
+<img class="w-full h-full object-cover" data-alt="Modern conference hall with stage lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqMoGKSmiSv34cTGcFDKcQPdD4woZUk7k2yluQMobg39r3FuO3iqfQyRywAUIaL44QsCWKFD6niVv74sdQmA4S0qGQSmvZYi5wNhHsPopSoKQ_BnrSxRinuQLVQUZL7UebvYbvof6TQMKZko830XQy9pIRkgYzR9gvPZDJEs02lN4Or_QiWm6834xV5CGqvKKxQ8LOlbNyy13slMfr2XIOC9nqI1H24Bf2eZdqsd_uiJ3iABDxXL_3xSl-L3ENg-jXHpKh0Gk6_Q"/>
+<span class="absolute top-3 left-3 px-2.5 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-lg text-xs font-bold text-primary">TECH</span>
+<span class="absolute top-3 right-3 px-2.5 py-1 bg-green-500 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider">Confirmed</span>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 line-clamp-1">Global SaaS Summit 2024</h3>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="material-icons text-sm text-primary/60">calendar_today</span>
+                                        Oct 24, 2024 • 09:00 AM
+                                    </div>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="material-icons text-sm text-primary/60">location_on</span>
+                                        Moscone Center, San Francisco
+                                    </div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-primary/5 text-primary text-xs font-bold rounded-lg hover:bg-primary/10 transition-colors flex items-center justify-center gap-1">
+<span class="material-icons text-sm">event_available</span> Add to Cal
+                                    </button>
+<button class="flex-1 py-2 bg-slate-50 dark:bg-slate-800 text-slate-400 text-xs font-bold rounded-lg hover:text-red-500 transition-colors">
+                                        Cancel
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-white dark:bg-slate-900 rounded-xl border border-primary/5 overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1">
+<div class="relative h-40">
+<img class="w-full h-full object-cover" data-alt="Elegant corporate gala dinner setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv8EGTxMEUhUW8He0SFIgLUvuKNR3_TQtT1TYssA4V6EC71wS0Te1VaZvOlHAjNzRj2l-aXalVfF6c9rVlHM1PwAF295KDg3VACWAhAQxmPvSxtp1BoaMvhHXogqyn8gv93hkIQ3FzUlGeyCE2xzOVMJo5B2m0pKNKpM2gm7uaVYoGf-tmbYPsFL7OgFiPfkQoGEgkc1BH58Itv--43hKKe7inNhIFBArlwhrWwPN7_I3qpl7wUuTXoK9hGjNnQ9dJ84GWhzt9YQ"/>
+<span class="absolute top-3 left-3 px-2.5 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-lg text-xs font-bold text-primary">BUSINESS</span>
+<span class="absolute top-3 right-3 px-2.5 py-1 bg-blue-500 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider">Waiting List</span>
+</div>
+<div class="p-5">
+<h3 class="font-bold text-slate-900 dark:text-white mb-2 line-clamp-1">Executive Networking Mixer</h3>
+<div class="space-y-2 mb-6">
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="material-icons text-sm text-primary/60">calendar_today</span>
+                                        Nov 12, 2024 • 06:30 PM
+                                    </div>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="material-icons text-sm text-primary/60">location_on</span>
+                                        Skyline Lounge, NY
+                                    </div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-primary/5 text-primary text-xs font-bold rounded-lg hover:bg-primary/10 transition-colors flex items-center justify-center gap-1">
+<span class="material-icons text-sm">info</span> View Status
+                                    </button>
+<button class="flex-1 py-2 bg-slate-50 dark:bg-slate-800 text-slate-400 text-xs font-bold rounded-lg hover:text-red-500 transition-colors">
+                                        Leave
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Empty State Example (Conceptual Placeholder for organizing tab) -->
+<div class="group bg-slate-50 dark:bg-slate-900/50 rounded-xl border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-8 text-center min-h-[300px]">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-4">
+<span class="material-icons text-primary/40 text-3xl">add_circle_outline</span>
+</div>
+<h3 class="font-bold text-slate-700 dark:text-slate-300">Discover More Events</h3>
+<p class="text-xs text-slate-500 mt-2 max-w-[200px] mx-auto">Don't miss out on upcoming conferences and workshops.</p>
+<button class="mt-6 px-6 py-2 bg-primary text-white text-xs font-bold rounded-lg">Browse Marketplace</button>
+</div>
+</div>
+<!-- Organizing Table Section (Initially hidden in UI logic, but rendered for visibility in this task) -->
+<div class="mt-12 bg-white dark:bg-slate-900 rounded-xl border border-primary/5 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-primary/5 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/50">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-icons text-primary">assessment</span>
+                                Organizing Dashboard Summary
+                            </h3>
+<button class="text-xs font-bold text-primary hover:underline">View All Organized Events</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+<tr>
+<th class="px-6 py-4">Event Details</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-center">Attendees</th>
+<th class="px-6 py-4 text-center">Revenue</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Coding workshop background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6tnEzVmsh8V0VqhG9LmPVjrVXcQXI-VBseH5NvgiTpubp0VTlV6IZpla2txNj6Kj3fsz2hn2JCpkkLBc2crawy0aVtABJtHu4jGHzbUxuVIU00rnKWZcTb2grt-JayzuqtiTcjJbxIY-ZGTsI4Yr4nLl4ypCZuzMe0PjG0nZD88sexLZFCRxCjoYJyQYd5F36BkSQGTTgNiT5Hx1-btqBGi0i1GeWg-B50fh9a15jRulY_MEekVZu7AkcPzOKvqadplq58RHEcw"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Python Workshop 2024</p>
+<p class="text-[11px] text-slate-500">Sept 12, 2024 • Virtual Event</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-bold rounded uppercase">Live</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="text-sm font-medium">142/200</div>
+<div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full mx-auto mt-1 overflow-hidden">
+<div class="h-full bg-primary" style="width: 71%"></div>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="text-sm font-bold">$3,450</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-xl">analytics</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Outdoor food festival scene" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpq59L4lWpEAmPspT8wuui5vD8KCSJU3TUoua04a3-P2pgyUWGPBmPzeXcArUFLw7UCREmErJbjJ4rF_QGPur5uTWdvmR0npvVXcBGWxqRI8vloQM9hCcjgDqaqVOcprEi-ZkQWo7Gs-Dw6isHaiAZJgt6r9cSeeWYp1XzlVcaJfbezbOkRR6_sov831RHb5NRnVtjMJVlOSZ_lHT2KHErlrLjyqxKFErqbj0L-RXm0VGn4Wo32R7U4mjNlR7Nmzve6q8RBx0qXg"/>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Summer Food Fest</p>
+<p class="text-[11px] text-slate-500">Aug 30, 2024 • Central Park</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-bold rounded uppercase">Draft</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="text-sm font-medium">0/500</div>
+<div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full mx-auto mt-1 overflow-hidden">
+<div class="h-full bg-primary" style="width: 0%"></div>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="text-sm font-bold">$0</span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-xl">analytics</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Section -->
+<footer class="mt-auto p-8 border-t border-primary/10 text-center">
+<p class="text-xs text-slate-400">© 2024 MyEvents Platform. All rights reserved. • <a class="hover:text-primary" href="#">Privacy Policy</a> • <a class="hover:text-primary" href="#">Terms of Service</a></p>
+</footer>
+</main>
+</div>
+</body></html>

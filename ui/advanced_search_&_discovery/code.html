@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyEvents | Advanced Search &amp; Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Sticky Navigation & Search Header -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-primary/20">
+<div class="max-w-7xl mx-auto px-4 py-4">
+<div class="flex flex-col lg:flex-row lg:items-center gap-4">
+<!-- Brand & Mobile Toggle -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-icons">event</span>
+</div>
+<span class="text-xl font-bold tracking-tight">MyEvents</span>
+</div>
+<button class="lg:hidden p-2 text-slate-400">
+<span class="material-icons">menu</span>
+</button>
+</div>
+<!-- Main Search Bar -->
+<div class="flex-1 relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-100 dark:bg-primary/10 border-none rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary text-sm" placeholder="Search for tech conferences, music festivals, workshops..." type="text" value="Developer Summit 2024"/>
+</div>
+<!-- User Profile / CTA -->
+<div class="hidden lg:flex items-center gap-4">
+<button class="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">Sign In</button>
+<button class="px-6 py-2 bg-primary text-white text-sm font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">Create Event</button>
+</div>
+</div>
+<!-- Advanced Filter Toolbar (Desktop) -->
+<div class="hidden lg:flex items-center gap-4 mt-4 pt-4 border-t border-slate-100 dark:border-primary/10">
+<!-- Date Filter -->
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-primary/5 rounded-lg text-xs font-semibold hover:bg-slate-200 dark:hover:bg-primary/20 transition-colors">
+<span class="material-icons text-xs">calendar_today</span>
+                        Date: Oct 20 - Nov 15
+                        <span class="material-icons text-xs">expand_more</span>
+</button>
+</div>
+<!-- Category Filter -->
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-primary/5 rounded-lg text-xs font-semibold hover:bg-slate-200 dark:hover:bg-primary/20 transition-colors">
+<span class="material-icons text-xs">category</span>
+                        Category: Technology
+                        <span class="material-icons text-xs">expand_more</span>
+</button>
+</div>
+<!-- Distance Slider -->
+<div class="flex flex-col gap-1 flex-1 max-w-[180px]">
+<div class="flex justify-between text-[10px] font-bold text-slate-500 uppercase">
+<span>Distance</span>
+<span>50 miles</span>
+</div>
+<input class="w-full h-1 bg-slate-200 dark:bg-primary/20 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+<!-- Price Range -->
+<div class="flex items-center gap-2">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-500">$</span>
+<input class="w-16 bg-slate-100 dark:bg-primary/5 border-none rounded-lg py-1.5 pl-6 pr-2 text-xs" placeholder="Min" type="text"/>
+</div>
+<span class="text-slate-400">-</span>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-500">$</span>
+<input class="w-16 bg-slate-100 dark:bg-primary/5 border-none rounded-lg py-1.5 pl-6 pr-2 text-xs" placeholder="Max" type="text"/>
+</div>
+</div>
+<div class="ml-auto flex gap-2">
+<button class="px-3 py-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-sm">view_list</span>
+</button>
+<button class="px-3 py-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-icons text-sm">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-8">
+<!-- Results Header -->
+<div class="flex items-center justify-between mb-6">
+<h1 class="text-sm font-semibold text-slate-500 uppercase tracking-widest">
+                Showing <span class="text-primary">12</span> events for "Developer Summit"
+            </h1>
+<button class="flex lg:hidden items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-xs font-bold">
+<span class="material-icons text-xs">filter_list</span>
+                Filters
+            </button>
+</div>
+<!-- Event List Grid -->
+<div class="space-y-4">
+<!-- Event Card 1 (Active/High Performance List Item) -->
+<div class="group bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/10 hover:border-primary/50 rounded-xl overflow-hidden transition-all duration-200 hover:shadow-xl hover:shadow-primary/5 flex flex-col md:flex-row items-stretch">
+<div class="relative w-full md:w-48 h-48 md:h-auto overflow-hidden">
+<img alt="Event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="People at a large tech conference stage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsSVnelCZdrZcTR-6QekMkYk8LCGJ5PpiMP0xKb_NUzSiKz2zyv782a_O8kBd1BD51cA4_1HNhuwvc8rd7CN03wR8JfGA62x7Vr4Gj7w9JaovCUgP6p7cKgx5tmw9OkCkwJvIDXC0Z142bhAQJuwYITX7F9zfkILqEOGEvlLT8F4cYSe24l44kcSOC0y7OtnvwQrFKvg_ZbiSgHiyYXFu81j8eqByYF_QqD9lN3w-4QwK9kKXU2Du9B6pWt3jriHnd6FYcmdQzuQ"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-white/90 dark:bg-background-dark/90 rounded text-[10px] font-black uppercase tracking-tighter">
+                        Oct 24
+                    </div>
+</div>
+<div class="flex-1 p-5 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                                Global <span class="bg-primary/20 text-primary px-1 rounded">Developer Summit</span> 2024: Next-Gen AI
+                            </h2>
+<span class="px-2 py-1 bg-green-500/10 text-green-500 text-[10px] font-bold rounded uppercase">Few Left</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4">
+                            Join the world's leading <span class="text-primary underline decoration-primary/30 font-medium">developers</span> and engineers to explore the future of artificial intelligence, cloud architecture, and open-source ecosystems...
+                        </p>
+</div>
+<div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-sm text-primary">schedule</span>
+                            09:00 AM - 05:00 PM
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-sm text-primary">location_on</span>
+                            San Francisco Convention Center
+                        </div>
+<div class="flex items-center gap-1.5 ml-auto">
+<span class="text-slate-400">Starts at</span>
+<span class="text-base font-bold text-slate-900 dark:text-white">$199.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/10 hover:border-primary/50 rounded-xl overflow-hidden transition-all duration-200 hover:shadow-xl hover:shadow-primary/5 flex flex-col md:flex-row items-stretch">
+<div class="relative w-full md:w-48 h-48 md:h-auto overflow-hidden">
+<img alt="Event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern collaborative office space with developers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADnlhAg1kH8CwXFJgLSAUHPZXybHS4m0AHII7xXBLAznACiPLPxIECsqiAzLC3tyRhvZE-6yI6wSYlG-wb_06S3lNg-0-23Q3LqOVNhRGLQMM80CwhkNTU0nweE9Pi88D6bO1Z72TuP7nXPP15F2KcR0pnkCWmJNtYg0QQf1lgU9hakZaaNFDA1-aj2anXVT79tj54F2wHIWSeryIrvICG2LaMclrR4mPPqHcV0gO-UKyVciuLpZPeJRBnFbWqTFbynhbdHnCvWA"/>
+<div class="absolute top-3 left-3 px-2 py-1 bg-white/90 dark:bg-background-dark/90 rounded text-[10px] font-black uppercase tracking-tighter">
+                        Oct 28
+                    </div>
+</div>
+<div class="flex-1 p-5 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                                Frontend <span class="bg-primary/20 text-primary px-1 rounded">Developer Summit</span> Workshop
+                            </h2>
+<span class="px-2 py-1 bg-slate-500/10 text-slate-500 text-[10px] font-bold rounded uppercase">Standard</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4">
+                            A deep dive into Vue.js and React performance optimization for senior <span class="text-primary underline decoration-primary/30 font-medium">developers</span> looking to scale production apps...
+                        </p>
+</div>
+<div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-sm text-primary">schedule</span>
+                            10:00 AM - 02:00 PM
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-sm text-primary">location_on</span>
+                            Tech Hub South, Palo Alto
+                        </div>
+<div class="flex items-center gap-1.5 ml-auto">
+<span class="text-slate-400">Price</span>
+<span class="text-base font-bold text-slate-900 dark:text-white">$45.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Card 3 (Sold Out State) -->
+<div class="group bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/10 opacity-75 rounded-xl overflow-hidden flex flex-col md:flex-row items-stretch grayscale">
+<div class="relative w-full md:w-48 h-48 md:h-auto overflow-hidden">
+<img alt="Event" class="w-full h-full object-cover" data-alt="Large audience in a dark auditorium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQFAwTBN7CrQHyZkLozzkZl4j5P7gNEIEUf1tAxbfM5IupWe1SPOFo6lEArfful4kMg8CiKjTQ8iJbSSSWFa7aM2jWMFseBYKwS356tXIZ7bzT775UZlieyzvGk0_B_8NojXW7s-KJ1t0m_rVqDhlAiRVWKhGdW9QRuEum_zqLiKfHesZseSselXxjWuwoK1c8-q5Uz2kpX5ZS04R_w8c89hGJlun01htvpXVtjrVRnkKZk_Tb7t5IHO2No10lXLcWruZxIF1JOg"/>
+<div class="absolute inset-0 bg-background-dark/60 flex items-center justify-center">
+<span class="border-2 border-white px-4 py-1 text-white font-black uppercase text-xs rotate-[-15deg]">Sold Out</span>
+</div>
+</div>
+<div class="flex-1 p-5 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-lg font-bold text-slate-400 leading-tight">
+                                Fullstack <span class="bg-slate-500/20 text-slate-400 px-1 rounded">Developer Summit</span> Afterparty
+                            </h2>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm line-clamp-2 mb-4">
+                            Networking event with music, drinks, and casual discussions following the main <span class="font-medium">summit</span> events...
+                        </p>
+</div>
+<div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-sm">schedule</span>
+                            07:00 PM - 11:00 PM
+                        </div>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-sm">location_on</span>
+                            Skyline Lounge, SF
+                        </div>
+<div class="flex items-center gap-1.5 ml-auto">
+<span class="text-base font-bold">SOLD OUT</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Zero Results State (Hidden by default, shown for demonstration logic) -->
+<div class="mt-20 flex flex-col items-center justify-center text-center max-w-md mx-auto py-12 border-2 border-dashed border-slate-200 dark:border-primary/10 rounded-2xl">
+<div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-icons text-5xl text-primary">search_off</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Zero Results Found</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-8 px-6">
+                We couldn't find any events matching your current criteria. Try adjusting your location radius or changing the date range.
+            </p>
+<button class="px-8 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/25 flex items-center gap-2 hover:scale-105 transition-transform">
+<span class="material-icons text-sm">refresh</span>
+                Clear All Filters
+            </button>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex items-center justify-center gap-2">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-primary/10 hover:bg-slate-100 dark:hover:bg-primary/10">
+<span class="material-icons text-sm">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-primary/10 hover:bg-slate-100 dark:hover:bg-primary/10">2</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-primary/10 hover:bg-slate-100 dark:hover:bg-primary/10">3</button>
+<span class="px-2 text-slate-400">...</span>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-primary/10 hover:bg-slate-100 dark:hover:bg-primary/10">12</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center border border-slate-200 dark:border-primary/10 hover:bg-slate-100 dark:hover:bg-primary/10">
+<span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Footer Meta -->
+<footer class="mt-20 border-t border-slate-200 dark:border-primary/10 bg-white dark:bg-background-dark py-12">
+<div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-icons text-sm">event</span>
+</div>
+<span class="font-bold tracking-tight">MyEvents</span>
+</div>
+<div class="flex gap-8 text-xs font-semibold text-slate-500 uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+<a class="hover:text-primary transition-colors" href="#">API Docs</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+<div class="text-xs text-slate-400">
+                © 2024 MyEvents Platform. Production-grade environment.
+            </div>
+</div>
+</footer>
+</body></html>

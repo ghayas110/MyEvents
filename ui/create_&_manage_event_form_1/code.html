@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyEvents | Create &amp; Manage Event</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2233",
+                        "border-dark": "#2d3748"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 10px; }
+        .step-active { color: #135bec; border-color: #135bec; }
+        .completeness-fill { transition: width 0.5s ease-in-out; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<!-- Navigation Header -->
+<nav class="border-b border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-icons-outlined text-white">event</span>
+</div>
+<span class="text-xl font-bold tracking-tight">MyEvents<span class="text-primary">.</span></span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-medium text-slate-500 uppercase tracking-widest">Draft Saved 12:45 PM</span>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-icons-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
+<span class="text-xs font-bold text-primary">JD</span>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
+<!-- Stepper -->
+<div class="mb-10">
+<div class="flex items-center justify-between max-w-4xl mx-auto">
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
+<span class="material-icons-outlined text-sm">check</span>
+</div>
+<span class="text-xs font-semibold text-primary uppercase">Core Details</span>
+</div>
+<div class="flex-1 h-px bg-primary mx-4"></div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
+<span class="text-sm font-bold">2</span>
+</div>
+<span class="text-xs font-semibold text-primary uppercase">Logistics</span>
+</div>
+<div class="flex-1 h-px bg-slate-200 dark:bg-border-dark mx-4"></div>
+<div class="flex flex-col items-center gap-2 group cursor-not-allowed">
+<div class="w-10 h-10 rounded-full border-2 border-slate-300 dark:border-border-dark text-slate-400 flex items-center justify-center">
+<span class="text-sm font-bold">3</span>
+</div>
+<span class="text-xs font-semibold text-slate-400 uppercase">Management</span>
+</div>
+<div class="flex-1 h-px bg-slate-200 dark:bg-border-dark mx-4"></div>
+<div class="flex flex-col items-center gap-2 group cursor-not-allowed">
+<div class="w-10 h-10 rounded-full border-2 border-slate-300 dark:border-border-dark text-slate-400 flex items-center justify-center">
+<span class="text-sm font-bold">4</span>
+</div>
+<span class="text-xs font-semibold text-slate-400 uppercase">Gallery</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Form Column -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Section 1: Logistics -->
+<section class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-border-dark">
+<h2 class="text-lg font-bold">Logistics &amp; Location</h2>
+<p class="text-sm text-slate-500">Define where and when your event takes place.</p>
+</div>
+<div class="p-6 space-y-6">
+<!-- City & Map Selection -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">City Name</label>
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-2.5 text-slate-400 text-sm">location_on</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="text" value="San Francisco, CA"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Latitude</label>
+<input class="w-full px-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="37.7749" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Longitude</label>
+<input class="w-full px-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="-122.4194" type="text"/>
+</div>
+</div>
+</div>
+<!-- Map Preview -->
+<div class="relative h-48 w-full rounded-xl overflow-hidden border border-slate-200 dark:border-border-dark">
+<div class="absolute inset-0 bg-slate-200 animate-pulse">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="Stylized dark map of San Francisco area" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiQFDGzPZpdMqMfRD3KUBZqVsU2lKBIwYdM5U9KEauCkrPYO9GM9mtK5JTVCKJjPLzTjuo5OOxVdY7TuNwOuNydnqB_NHWL5zS_xOn8NrXpihdw2S3j33fbrJohH9xWulT0eD2RiCRBLDgDDXLnIahpERLMtfxasTsBfZArT0Nacsf5UxIofOxNLUCJMacBCD48L5fqQZeLAP8WHGRzcdTmoanu7npO9o59cxLvVyi5v5b7oxj4u2Qhfj03cgt7HiRjiPCh6jZ3w"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center ring-4 ring-primary/40">
+<span class="material-icons-outlined text-primary">location_on</span>
+</div>
+</div>
+</div>
+<!-- Date/Time Picker -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Start Date &amp; Time</label>
+<div class="relative">
+<span class="material-icons-outlined absolute left-3 top-2.5 text-slate-400 text-sm">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-slate-400" type="datetime-local"/>
+</div>
+<p class="text-[10px] text-red-500 flex items-center gap-1">
+<span class="material-icons-outlined text-[12px]">error_outline</span>
+                                    Date must be in the future
+                                </p>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Attendee Limit</label>
+<div class="flex items-center">
+<button class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-border-dark rounded-l-lg hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-icons-outlined text-sm">remove</span>
+</button>
+<input class="w-full h-10 text-center bg-slate-50 dark:bg-background-dark border-y border-slate-200 dark:border-border-dark focus:ring-0" type="number" value="500"/>
+<button class="w-10 h-10 flex items-center justify-center border border-slate-200 dark:border-border-dark rounded-r-lg hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-icons-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Management & Organizer -->
+<section class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="p-6 border-b border-slate-100 dark:border-border-dark">
+<h2 class="text-lg font-bold">Organizer Information</h2>
+</div>
+<div class="p-6">
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Phone Number (International)</label>
+<div class="flex gap-2">
+<div class="relative w-32">
+<select class="w-full px-3 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg appearance-none focus:ring-2 focus:ring-primary">
+<option>🇺🇸 +1</option>
+<option>🇬🇧 +44</option>
+<option>🇩🇪 +49</option>
+</select>
+<span class="material-icons-outlined absolute right-2 top-2.5 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+<input class="flex-1 px-4 py-2 bg-slate-50 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg focus:ring-2 focus:ring-primary" placeholder="555-0123" type="tel"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Media Upload -->
+<section class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="p-6 border-b border-slate-100 dark:border-border-dark flex justify-between items-center">
+<div>
+<h2 class="text-lg font-bold">Event Gallery</h2>
+<p class="text-sm text-slate-500">High-quality images (min 1920x1080px)</p>
+</div>
+<span class="text-xs font-bold bg-primary/10 text-primary px-3 py-1 rounded-full">3 / 10 Images</span>
+</div>
+<div class="p-6 space-y-6">
+<!-- Dropzone -->
+<div class="border-2 border-dashed border-slate-300 dark:border-border-dark rounded-xl p-10 flex flex-col items-center justify-center bg-slate-50/50 dark:bg-background-dark/30 hover:bg-slate-50 dark:hover:bg-background-dark/50 transition-colors group cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<h3 class="text-base font-semibold">Drag &amp; drop files or <span class="text-primary underline">browse</span></h3>
+<p class="text-sm text-slate-500 mt-1">Supports: JPG, PNG, WEBP (Max 10MB each)</p>
+</div>
+<!-- Image Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+<!-- Image Item 1 -->
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-border-dark">
+<img class="w-full h-full object-cover" data-alt="Close up of concert crowd with blue lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS8zfbgfmhQg9d75zAEjKK5F-vxIxTgXp8P1kZjDd4JVeznJ9iDgv0aBC_3TvNKkxJckmG6cDdNOBDbb9KYS94OzQRCed-pg_xpC-hyAJClooOKSLLRUJBHnmfwY4lFrPCrlgfcB_8EkWWlUnTupGwJy989kbANGUBTQvYxoO1sVHMbtH2tKBLkAZv7Qh3KSVpdbVpq0ssrvDs-qG6UHoIuGrCoEQsAJiEkS9RWfPVUPw0KBj8fS5lc_exfQ-cMudBKCQe3emdUw"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center hover:bg-slate-100">
+<span class="material-icons-outlined text-sm">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
+<span class="material-icons-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="absolute bottom-0 inset-x-0 h-1 bg-primary"></div>
+</div>
+<!-- Image Item 2 (Uploading) -->
+<div class="relative aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-border-dark bg-slate-100 dark:bg-slate-800">
+<img class="w-full h-full object-cover opacity-50 blur-[2px]" data-alt="Stage lighting and event venue interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwACMAJKpO6fGQHFvrfai0yHzlyQkyOsRiWl-naQit9Zg7Yw_YGJkMdXnXA3gbAjCFU0REp_mPqH7f4CSXFhwzWs0FJiXZ97eT0IDFOxHoPjzKhDgn8FFb3eIIQHnplW2FRwQyfpsTv5kbDPqwveReJ1DqE12s_OEqR8kDWYOIfMzbs4Ov2BpqiW-0PBUjpSdAU-iJaf9IkRojg2rd41ltGzP1Cpzi5QFZH48uWPDWKZY8zzY6aIfiiRIdNXPQeONhmhLOJk_bvA"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center px-4">
+<span class="text-[10px] font-bold text-white uppercase mb-2">Uploading 65%</span>
+<div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+</div>
+<!-- Image Item 3 -->
+<div class="relative group aspect-square rounded-lg overflow-hidden border border-slate-200 dark:border-border-dark">
+<img class="w-full h-full object-cover" data-alt="Conference speaker on stage with screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUae-nrcuua7Z5E07lY1H6AM64XiE08CnShGv-pb6eXWgcDr5mR1G-4HHHX5Dvc3AsgDda34dBDwQ-fYL03qCXnQHNeOOQb2LGNjwjaJpkw1xMmrmNcnFGNz_sSg6eQefT5jffi9HW5wnRMALukhK_1uATPEEjKudNu-RvYHfJX3jf1QtRzHZBP5Caub9ptDN7g-s4IOOm5I_bpwBocFX_9mhODCs7GkOURbx3Tspe_bH_GcC-Gt9W1l2hbcym-2c0g1G4ZY_00g"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center hover:bg-slate-100">
+<span class="material-icons-outlined text-sm">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
+<span class="material-icons-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="absolute bottom-0 inset-x-0 h-1 bg-primary"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sticky Sidebar Column -->
+<div class="lg:col-span-1">
+<div class="sticky top-24 space-y-6">
+<!-- Progress Card -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm p-6">
+<h3 class="font-bold mb-4">Form Completeness</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-sm font-medium text-slate-500">Current Status</span>
+<span class="text-2xl font-bold text-primary">78%</span>
+</div>
+<div class="h-3 w-full bg-slate-100 dark:bg-border-dark rounded-full overflow-hidden">
+<div class="completeness-fill h-full bg-primary" style="width: 78%;"></div>
+</div>
+<ul class="space-y-3 pt-4 border-t border-slate-100 dark:border-border-dark">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-icons-outlined text-emerald-500 text-sm mt-0.5">check_circle</span>
+<span class="text-slate-600 dark:text-slate-400">Basic information complete</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-icons-outlined text-emerald-500 text-sm mt-0.5">check_circle</span>
+<span class="text-slate-600 dark:text-slate-400">Date &amp; Location configured</span>
+</li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-icons-outlined text-primary text-sm mt-0.5">radio_button_checked</span>
+<span class="font-medium">Missing 2 more gallery images</span>
+</li>
+<li class="flex items-start gap-3 text-sm opacity-50">
+<span class="material-icons-outlined text-slate-400 text-sm mt-0.5">radio_button_unchecked</span>
+<span>Review visibility settings</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-6">
+<h3 class="font-bold text-primary mb-2">Production Tip</h3>
+<p class="text-xs text-primary/80 leading-relaxed">
+                            Adding at least 5 high-resolution images increases attendee engagement by up to 45%. Consider including venue layout photos.
+                        </p>
+</div>
+<button class="w-full py-4 px-6 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-2">
+<span class="material-icons-outlined">visibility</span>
+                        Preview Live Page
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Actions -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md border-t border-slate-200 dark:border-border-dark py-4 z-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-4 order-2 md:order-1">
+<button class="px-6 py-2.5 rounded-lg border border-slate-200 dark:border-border-dark font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                    Back
+                </button>
+<button class="px-6 py-2.5 rounded-lg text-slate-500 font-semibold hover:text-slate-800 dark:hover:text-slate-200">
+                    Save as Draft
+                </button>
+</div>
+<div class="flex items-center gap-6 w-full md:w-auto order-1 md:order-2">
+<div class="hidden md:block text-right">
+<p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Estimated completion</p>
+<p class="text-xs font-bold">2 Minutes</p>
+</div>
+<button class="w-full md:w-auto px-10 py-3 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    Next Step: Settings
+                    <span class="material-icons-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- Floating Toast Notification -->
+<div class="fixed bottom-24 right-8 z-50">
+<div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-sm font-medium">Auto-save: Changes saved 2s ago</span>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detailed Event View | MyEvents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#135bec",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .sticky-card { position: sticky; top: 2rem; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Offline Mode Banner -->
+<div class="bg-amber-500/10 border-b border-amber-500/20 py-2 px-4 text-center">
+<p class="text-amber-500 text-sm font-medium flex items-center justify-center gap-2">
+<span class="material-icons text-base">cloud_off</span>
+            You are currently offline. Some features may be limited, but your changes will sync later.
+        </p>
+</div>
+<!-- Navigation -->
+<nav class="bg-background-light/50 dark:bg-background-dark/50 backdrop-blur-md border-b border-primary/10 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons text-white text-xl">event</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary">MyEvents</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Browse Events</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">My Tickets</a>
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 p-0.5">
+<img alt="User Profile" class="w-full h-full rounded-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-bnzOIZilgmh1eNtPFovq3lP94kgdBvMeuWUS0D8OmQzVZMG0pnMbYxJYMpd8ulDeHsW8cUcugKRCKPsoNE62YNxI8TBhOf-NypN7q40vOZPKEtkPEenEOUZRBbfdiz6l_vzxUrQbjtja2jswgnfvSIfKgeet4OwqMjkm81KVNyBlkoMWem34WryetgoIe6semBUJOnizoPUY-ys5-ilWxC4tzli-xDRCg8YoS9lajtZzQW0b4BS1bnslV9VNs6uzb4mfdWP4ig"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Success Toast Notification Placeholder -->
+<div class="fixed bottom-8 right-8 z-[100] animate-bounce">
+<div class="bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 border border-white/10">
+<span class="material-icons">check_circle</span>
+<div>
+<p class="font-bold">Registration Successful!</p>
+<p class="text-sm opacity-90">We've sent the tickets to your email.</p>
+</div>
+<button class="ml-4 opacity-70 hover:opacity-100">
+<span class="material-icons text-sm">close</span>
+</button>
+</div>
+</div>
+<!-- Hero Header -->
+<div class="relative h-[450px] w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Large high resolution concert event background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDswon2henGtMP2vUj1yio4stTX-OvJlSZF4FVCLgfjhxBFWvSB2NPL7f9Bpm6whFPJC9KKkc6mnY3EFOJUPrX8zBdIqINEwEto_VWyP93HyBhsTGJlvO4B15L69KbgjMHo5G0lguY6Pu03jolNNT5SRO__JYgjxrp-SoUdnjzRVeQv6Ee8FRqPRXMNxd7hsLDs97eyvkDswE4BV_gGonVrKTfs79RBYVUtZ2S-0nbf8i6nN4oIKfSkcG8pQML1e-2QAHICaGmHRw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8 lg:p-16">
+<div class="max-w-7xl mx-auto">
+<span class="bg-primary px-3 py-1 rounded text-xs font-bold uppercase tracking-widest text-white mb-4 inline-block">Technology &amp; Design</span>
+<h1 class="text-4xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight">Future Tech Summit 2024: <br/>AI &amp; The Human Experience</h1>
+<div class="flex items-center gap-6 text-white/80">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary">calendar_today</span>
+<span class="font-medium text-lg">October 24-26, 2024</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary">location_on</span>
+<span class="font-medium text-lg">Convention Center, San Francisco</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Left Column: Content -->
+<div class="lg:col-span-2 space-y-10">
+<!-- Description Section -->
+<section>
+<h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+<span class="w-1.5 h-8 bg-primary rounded-full"></span>
+                        About the Event
+                    </h2>
+<div class="prose prose-invert max-w-none text-slate-400 leading-relaxed space-y-4">
+<p class="text-lg">Join us for a three-day immersive experience where we bridge the gap between artificial intelligence and human-centric design. This year's Future Tech Summit brings together over 50 industry leaders, 200+ innovative startups, and a community of 5,000+ visionaries.</p>
+<p>Our sanitized environment ensures high performance and security for all attendees. Expect deep-dive workshops on:</p>
+<ul class="list-disc pl-5 space-y-2 marker:text-primary">
+<li>Generative AI in creative workflows</li>
+<li>Ethical frameworks for machine learning</li>
+<li>The future of spatial computing and AR/VR</li>
+<li>Building resilient distributed systems</li>
+</ul>
+<p>Whether you're a senior developer, a creative director, or a tech enthusiast, this event provides the networking opportunities and technical insights needed to stay ahead in a rapidly evolving landscape.</p>
+</div>
+</section>
+<!-- Attendee List -->
+<section class="bg-primary/5 border border-primary/10 rounded-xl p-8">
+<h3 class="text-xl font-bold mb-6">Who's attending?</h3>
+<div class="flex items-center gap-2">
+<div class="flex -space-x-3 overflow-hidden">
+<img alt="Attendee 1" class="inline-block h-12 w-12 rounded-full ring-4 ring-background-dark" data-alt="Woman smiling avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlqPBPTe32AxtSp6YHcme5QGZg-q-82CBFHI8OyhHXKRWrij8onTPGgeRfzCF4dwoZ8N3jXQUhmInhuB1qhuIpFj6NcOurJsVK3E3-RsG8LxHDPVKSoRDB80ByFt07n3b-As_QNUoSg-0PU0XTAjlroH9024JrkagR2XgNwxo7AJDbMXx3GYk_vhDDp-ltaMhd5ANX-uLFAhkhHzVnvKJi2QlRWbhKbK6AGG4ZuW1uLdP9H8uH1ftUwWwNVwyUf77oaL40mF8XiQ"/>
+<img alt="Attendee 2" class="inline-block h-12 w-12 rounded-full ring-4 ring-background-dark" data-alt="Man smiling avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBY4igC07Xen3uE88Q-VOLou-zieYduU158MXAtvxD7NRWLFD-8ZQwU_qftDsiUy_JhNAuVZCEJIT8NKprF7daczKtkUCSjKI0TGspm39cMihHIwQyw6LvIL0Ww_eyn0Hm_s_-9X0nm9e8NBC93M4Z2z97HkoLS8-MHVapA-2vzD6qIy_7HkiJtrVJx1ZmrgNqqfDejoUFGzMgkr4ChsB1xsy_2hp95romvF-YitpnvJatwiy-oV020eWcZA3IIDH1lScHUXeiHw"/>
+<img alt="Attendee 3" class="inline-block h-12 w-12 rounded-full ring-4 ring-background-dark" data-alt="Professional man headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJjIN8X3okFBC9XbCWXaitIxsYshTfZ1T9giLa3Jauu3GngOtYOBSlbmDBsz8HANAncMFjeHZ7SjcoQqdTAqyMUmVfyJ-gS5Jq-v1rs3wHw2INErJGICYOVonQVQD1Ffnale1rXaE8GXbXBbkfgdOfe1vm-6SJYrBR3wr1LXApsblf6uFV-rRNXkHgrw6WD44Qr8U0Ze841F1zkPqqPqgdwj4PP5M-Sz34hIOSJ0scD0q7l0BOY4rfwQJNmSHT5K6ynrCAYTZFOw"/>
+<img alt="Attendee 4" class="inline-block h-12 w-12 rounded-full ring-4 ring-background-dark" data-alt="Woman with glasses avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfU6GjCcmVJrMphKPAa8qXMZtUkmoteb2tzLsa1sFqZq0zeFQRl8x9PqqNXEjBisYMYQixx_YJ7Oabqsxejtg0xzA9BpaTv1kThE4lmSON3GW_wDHk86N5s8AbtfBf8ItuOrivoxRID6SnVEPHenyNYtzF1QvaLPtpLpA9sqAQYN7Tilx7pHLSeZg7yRzhXayFdgOCuENdi258Bj90t4IEHbaA5u04em3Kx_29e9x5XBXVIuOXkqEm_GaLxKFaXrSehU_t-afAyQ"/>
+<img alt="Attendee 5" class="inline-block h-12 w-12 rounded-full ring-4 ring-background-dark" data-alt="Casual woman smiling avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9A8KMM8sSBaI0e8Oi9DuumhPai5J9YWkjbtHkGcpNqRIWh0miRi1c66PNDw0FdAS1S1Zdq4aUQKj6ZqoHnWB2ugxxGiz7rRcqDie0GzHygmKgMK-4W5ky1INflZQx0G9r9KfqRXG_jkG86Pb6V0RxPHBvdohQWtTB00hrziBKhRNp6jOrGDw1a-xGreUThxWYNZXV3EjXXkfgl21tWRisJziIyBoqp2AYa4EzVlgHp8yy9vrXW332KdcbdFsJGMgMM1gQ0kvDAQ"/>
+<div class="flex items-center justify-center h-12 w-12 rounded-full ring-4 ring-background-dark bg-primary text-white text-xs font-bold">+420</div>
+</div>
+<p class="ml-4 text-slate-400 font-medium">Join 425 others registered for this event</p>
+</div>
+</section>
+<!-- Location / Map -->
+<section>
+<h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+<span class="w-1.5 h-8 bg-primary rounded-full"></span>
+                        Location
+                    </h2>
+<div class="bg-primary/5 border border-primary/10 rounded-xl overflow-hidden">
+<div class="p-6">
+<p class="font-bold text-lg">Moscone Center West</p>
+<p class="text-slate-400">800 Howard St, San Francisco, CA 94103, United States</p>
+</div>
+<div class="h-80 w-full relative">
+<!-- Map Placeholder Design -->
+<div class="absolute inset-0 bg-slate-800 flex items-center justify-center grayscale opacity-50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Map satellite view of San Francisco city" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9AFNTytgXO3AKhMH-7VM-EXlby6-z8j_xIgqbFLXeWlfPPwqNNwfGJ3dgewWtkS9wUftPbmB-Bkq8onGYIjG0O7-xOem57hk1XyKTlf-OUIYoLwrZuIpUQcaZDK67z48MD9onvIZm7BHI3cQfsl9BZKLwsrMdZbpC0uLs_3RzG3VUqxWLoCV5YKlE1pUZGwDpob-XJlD41ICcuLY8J00FYOgwJyyQtQI_JTnJatZLBNukYn7f4dSc4t6HvxCZeT08Olp9Xel5bw"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary p-3 rounded-full shadow-2xl animate-pulse">
+<span class="material-icons text-white text-3xl">location_on</span>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 bg-background-dark/80 backdrop-blur p-2 rounded-lg border border-white/10 flex gap-2">
+<button class="p-2 hover:bg-primary rounded transition-colors"><span class="material-icons text-sm">add</span></button>
+<button class="p-2 hover:bg-primary rounded transition-colors"><span class="material-icons text-sm">remove</span></button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sticky Action Card -->
+<div class="lg:col-span-1">
+<div class="sticky-card space-y-6">
+<!-- Main Action Card -->
+<div class="bg-white dark:bg-slate-900 border border-primary/10 rounded-xl shadow-2xl overflow-hidden">
+<div class="p-6 space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Ticket Price</p>
+<p class="text-3xl font-extrabold text-primary">$299.00</p>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-bold">
+                                    EARLY BIRD
+                                </div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons">schedule</span>
+</div>
+<div>
+<p class="text-sm font-bold">Date &amp; Time</p>
+<p class="text-xs text-slate-400">Oct 24, 09:00 AM - Oct 26, 06:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons">people_outline</span>
+</div>
+<div>
+<p class="text-sm font-bold">Remaining Slots</p>
+<p class="text-xs text-slate-400">45 tickets left out of 500</p>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/30 transition-all flex items-center justify-center gap-2 group">
+                                Register Now
+                                <span class="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-slate-500">Secure checkout powered by Stripe. No hidden fees.</p>
+</div>
+</div>
+<!-- Organizer Card -->
+<div class="bg-white dark:bg-slate-900 border border-primary/10 rounded-xl p-6 shadow-xl">
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">Organizer</p>
+<div class="flex items-center gap-4 mb-4">
+<img class="w-14 h-14 rounded-xl object-cover" data-alt="Organizer profile professional photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4GKfB1FtDonfaMjNhWQsxcshdwuktRYJhys3Ot0ZULN0UhOD1Qhdb1qB82Zl4ZSFN_3tKrIbYltVarCBotR-uThK8pockat21Zt5zBdz5QFFfY0354iYwyrBMHQn6PcJRMof3NG4s_rKhU88yQ-rvys9i482-5dP8NhPZbMeGVLU1XijYCCDHZ1Wk7YcS_3l8LJLopjfnXJfj2ZBzOzQurzi6KNCtp1xulSFzmSDBeKb7bcPjtJFbsdYA4Fw1ViQesf2IwnaFiw"/>
+<div>
+<h4 class="font-bold">Global Tech Events Inc.</h4>
+<p class="text-xs text-primary font-medium">Verified Organizer</p>
+</div>
+</div>
+<p class="text-sm text-slate-400 mb-6">Leading the industry in curated technology experiences since 2012.</p>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 py-2 rounded font-semibold text-sm transition-colors">
+<span class="material-icons text-sm">mail</span> Contact
+                            </button>
+<button class="flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 py-2 rounded font-semibold text-sm transition-colors">
+<span class="material-icons text-sm">add</span> Follow
+                            </button>
+</div>
+</div>
+<!-- Share Section -->
+<div class="flex justify-center gap-4">
+<button class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary transition-colors border border-white/5">
+<span class="material-icons text-lg">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors border border-white/5">
+<span class="material-icons text-lg">favorite_border</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary transition-colors border border-white/5">
+<span class="material-icons text-lg">file_download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background-light dark:bg-background-dark border-t border-primary/10 py-12 mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<div class="flex items-center justify-center gap-2 mb-6">
+<div class="w-6 h-6 bg-primary rounded flex items-center justify-center">
+<span class="material-icons text-white text-sm">event</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-primary">MyEvents</span>
+</div>
+<p class="text-slate-500 text-sm">© 2024 MyEvents Production. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
