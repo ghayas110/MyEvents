@@ -73,3 +73,29 @@ The project follows a clean, modular architecture:
 
 ---
 Built with ❤️ by Antigravity.
+
+## 📡 API Schema (mockapi.io)
+
+To set up the MockAPI project for this application, use the following schema for the `events` resource.
+
+### `events` Resource Schema
+
+| Field | Type | Description | Validation |
+|-------|------|-------------|------------|
+| `id` | `string` | Unique identifier (Auto-generated) | Primary Key |
+| `title` | `string` | Event title | Required, 5-100 chars |
+| `description` | `string` | Detailed event description | Required, Min 20 chars |
+| `date` | `string` | Event date and time (ISO format) | Required, Future date |
+| `location` | `string` | Venue address | Required |
+| `city` | `string` | City where event is held | Required, Min 2 chars |
+| `category` | `string` | Event category | Required (e.g., Tech, Music) |
+| `organizer` | `string` | Organizer name | Required |
+| `thumbnail` | `string` | Main image URL | Required (Image URL) |
+| `images` | `array` | Additional image URLs | Max 5 images |
+| `attendeeCount` | `number` | Number of registered attendees | Positive integer |
+| `isFavorited` | `boolean` | User's favorite status | Boolean |
+| `lat` | `number` | Latitude for map location | -90 to 90 (Optional) |
+| `lng` | `number` | Longitude for map location | -180 to 180 (Optional) |
+| `attendeeLimit`| `number` | Maximum allowed attendees | Positive integer (Optional) |
+
+---
